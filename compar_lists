@@ -1,0 +1,21 @@
+"""
+compare_lists.py
+Almarranz 2021
+Compare coordinates of two lists and extract the rows whose coordinates columns distance are smaller than variable 'distancia'.
+If more than two points in the second list are closer than 'distancia' to a point in the first list,the closest one is choosen 
+Firts two columns of each list have to be coordinates 
+It computes euclidean distances
+Both lists must be numpy arrays
+"""
+def compare_lists(list1,list2,distancia):
+    a='list#1'
+    b='lis#2'
+    common=[]
+    for i in range(list1.shape[0]): 
+                dist=distance.cdist(list1[i:i+1,0:2],list2[:,0:2], 'euclidean')
+                d=np.where(dist<distancia)
+                if len(d[1])>0:
+                    common.append((list1[i],list2[d[1][np.argmin(dist[d])]]))
+    #dic_listas['stars_1'+str(l)]=diff
+    print('common elements in lists %s and %s ----> '%(a,b),len(common))
+    return common
