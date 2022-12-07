@@ -7,7 +7,8 @@ Input parametres: list1, list2, col_index x1, col_index y1, col_index x2, col_in
 It computes euclidean distances
 Both lists must be numpy arrays
 """
-
+from scipy.spatial import distance
+import numpy as np
 def compare_lists(list1,list2,ls1_x,ls1_y,ls2_x,ls2_y,distancia):
     ls1_com = np.empty((0,list1.shape[1]))
     ls2_com = np.empty((0,list2.shape[1]))
