@@ -18,4 +18,4 @@ def compare_lists(list1,list2,distancia):
                     diff.append((list1[i],list2[d[1][np.argmin(dist[d])]]))
     #dic_listas['stars_1'+str(l)]=diff
     print('common elements in lists %s and %s ----> '%(a,b),len(diff))
-    return diff
+    return diff,1
