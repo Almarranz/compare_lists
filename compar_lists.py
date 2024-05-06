@@ -44,12 +44,8 @@ def compare_lists(list1,list2,ls1_x,ls1_y,ls2_x,ls2_y,distancia):
         for j in range(len(inds)):
             if np.isfinite(dist[inds[j][0],inds[j][1]]) and np.isfinite(dist[inds[j][0],inds[j][1]]):
                 if (dist[inds[j][0],inds[j][1]] <= min(dist[inds[j][0]])) and (dist[inds[j][0],inds[j][1]] <= min(dist[:,inds[j][1]])):
-                   # dist[inds[j][0]] = float('inf') 
-                   # dist[:,inds[j][1]] = float('inf') 
-                    
-                    dist[inds[j][0]] = distancia 
-                    dist[:,inds[j][1]] = distancia 
-                    
+                   dist[inds[j][0]] = float('inf') 
+                   dist[:,inds[j][1]] = float('inf')                   
                     l1.append(inds[j][0])
                     l2.append(inds[j][1])
                     # print(inds[j][0],inds[j][1])
