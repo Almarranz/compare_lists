@@ -8,42 +8,32 @@ Returns: Coord. of l1 matches, Coord. of l2 matches, l1 ind. of matches, l2 ind.
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
 def compare_lists(l1,l2, dis_min):
-    nbrs1 = NearestNeighbors(n_neighbors=1, algorithm='ball_tree').fit(l2)
+    nbrs1 = NearestNeighbors(n_neighbors=1, algorithm='auto', metric='euclidean').fit(l2)
     dis1, ind1 = nbrs1.kneighbors(l1)
 
-    nbrs2 = NearestNeighbors(n_neighbors=1, algorithm='ball_tree').fit(l1)
+    nbrs2 = NearestNeighbors(n_neighbors=1, algorithm='auto',metric='euclidean').fit(l1)
     dis2, ind2 = nbrs2.kneighbors(l2)
 
     dis1 = np.array(dis1)
 
-    # print(ind1)
-
-    # print(ind2)
-    matc1  = []
-    matc2  = []
-    d1 = [] 
-    d2 = [] 
-    l1_i = []
-    l2_i = []
+    matc1  = np.empty((0,2),float)
+    matc2  = np.empty((0,2),float)
+    d1 = np.empty((0,1),float)
+    d2 = np.empty((0,1),float)
+    l1_i = np.empty((0,1),int)
+    # l1_i = []
+    l2_i = np.empty((0,1),int)
+    # l2_i = []
     for i, idx1 in enumerate(ind1):
         # idx1 is the index of the nearest neighbor in list2 for point i in list1
         if ind2[idx1[0]] == i and dis1[i]< dis_min:
-            # print(l1[i], l2[idx1[0]])
-            matc1.append(l1[i])
-            matc2.append(l2[idx1[0]])
-            d1.append(dis1[i])
-            d2.append(dis2[idx1[0]])
-            l1_i.append(i)
-            l2_i.append(idx1[0])
-            
-
-    # valid = d1 < dis_min       
-    d1 = np.array(d1)
-    d2 = np.array(d2)
-    matc1= np.array(matc1)
-    matc2= np.array(matc2)
-    l1_i = np.array(l1_i)
-    l2_i = np.array(l2_i)
+          
+            matc1 = np.append(matc1, [l1[i]], axis= 0)
+            matc2 = np.append(matc2,[l2[idx1[0]]], axis= 0)
+            d1 = np.append(d1, [dis1[i]], axis = 0)
+            d2 = np.append(d2, [dis2[idx1[0]]], axis = 0)
+            l1_i = np.append(l1_i, [[i]], axis = 0)
+            l2_i = np.append(l2_i, [[idx1[0]]], axis = 0)
 
     comp = np.c_[matc1,matc2,l1_i,l2_i,d1]
     
