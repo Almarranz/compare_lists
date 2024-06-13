@@ -1,7 +1,7 @@
 """
 compare_lists.py
 Almarranz 2024 May 28
-Extracts the nearest neighbors between tow list that are closer that the value of 'dis_min'
+Extracts the nearest neighbors between two lists that are closer that the value of 'dis_min'
 l1 and l2 should be np arrays of coordinates [x,y] 
 Returns: Coord. of l1 matches, Coord. of l2 matches, l1 ind. of matches, l2 ind. of matches, distances 
 """
