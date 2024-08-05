@@ -35,6 +35,6 @@ def compare_lists(l1,l2, dis_min):
             l1_i = np.append(l1_i, [[i]], axis = 0)
             l2_i = np.append(l2_i, [[idx1[0]]], axis = 0)
 
-    comp = np.c_[matc1,matc2,l1_i,l2_i,d1]
+    comp = np.c_[matc1,matc2,l1_i.astype(int),l2_i.astype(int),d1]
     
     return comp
