@@ -39,6 +39,8 @@ def compare_lists(l1,l2, dis_min):
 
     comp = np.c_[matc1,matc2,l1_i.astype(int),l2_i.astype(int),d1]
     comp_t = Table(comp, names =('l1_x','l1_y','l2_x','l2_y','ind_1','ind_2','dist'))
+    comp_t['ind_1'] = comp_t['ind_1'].astype(int)
+    comp_t['ind_2'] = comp_t['ind_2'].astype(int)
 
     return comp_t
     #return comp
